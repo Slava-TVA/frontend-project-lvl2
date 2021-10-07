@@ -1,0 +1,24 @@
+{
+  "name": "@hexlet/code",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Compares two configuration files and shows a difference.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Slava-TVA/frontend-project-lvl2.git"
+  },
+  "author": "V. Tikhonov aka Chaka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Slava-TVA/frontend-project-lvl2/issues"
+  },
+  "homepage": "https://github.com/Slava-TVA/frontend-project-lvl2#readme",
+  "dependencies": {
+    "commander": "^8.2.0",
+    "jshint": "^2.13.1"
+  }
+}
