@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "type": "module",
   "description": "Compares two configuration files and shows a difference.",
+  "bin": {
+    "gendiff": "bin/gendiff.js"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,8 +14,8 @@
     "type": "git",
     "url": "git+https://github.com/Slava-TVA/frontend-project-lvl2.git"
   },
-  "author": "V. Tikhonov aka Chaka",
-  "license": "ISC",
+  "author": "Vyacheslav Tikhonov aka Chaka",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Slava-TVA/frontend-project-lvl2/issues"
   },
