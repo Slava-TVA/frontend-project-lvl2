@@ -10,21 +10,19 @@ ${key}: ${strOrObj(value[key], spaces + 1)}`);
 };
 const stylishFormatter = (data, spaces = 0) => {
   const arrayOfLines = data.map((obj) => {
-    if (obj.type === 'added') {
-      return `${addSpaces(spaces)}  + ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
+    switch (obj.type) {
+      case 'added':
+        return `${addSpaces(spaces)}  + ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
+      case 'removed':
+        return `${addSpaces(spaces)}  - ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
+      case 'unchangeable':
+        return `${addSpaces(spaces)}    ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
+      case 'changed':
+        return `${addSpaces(spaces)}  - ${obj.name}: ${strOrObj(obj.valueBefore, spaces + 1)}
+        \n${addSpaces(spaces)}  + ${obj.name}: ${strOrObj(obj.valueAfter, spaces + 1)}`;
+      default:
+        return `${addSpaces(spaces)}    ${obj.name}: ${stylishFormatter(obj.children, spaces + 1)}`;
     }
-    if (obj.type === 'removed') {
-      return `${addSpaces(spaces)}  - ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
-    }
-    if (obj.type === 'unchangeable') {
-      return `${addSpaces(spaces)}    ${obj.name}: ${strOrObj(obj.value, spaces + 1)}`;
-    }
-    if (obj.type === 'changed') {
-      return `${addSpaces(spaces)}  - ${obj.name}: ${strOrObj(obj.valueBefore, spaces + 1)}
-      \n${addSpaces(spaces)}  + ${obj.name}: ${strOrObj(obj.valueAfter, spaces + 1)}`;
-    }
-    return `${addSpaces(spaces)}    ${obj.name}:
-${stylishFormatter(obj.children, spaces + 1)}`;
   });
   const result = arrayOfLines.join('\n');
   return `{\n${result}\n${addSpaces(spaces)}}`;
