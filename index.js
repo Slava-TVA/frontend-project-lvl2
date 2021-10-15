@@ -3,8 +3,8 @@ import getFileData from './src/parsers.js';
 import formatter from './src/formatters/index.js';
 
 const gendiff = (filePath1, filePath2, format = 'stylish') => {
-  const data1 = getFileData(filePath1);
-  const data2 = getFileData(filePath2);
+  // const data1 = getFileData(filePath1);
+  // const data2 = getFileData(filePath2);
   const getDiff = (obj1, obj2) => {
     const overallKeys = [...Object.keys(obj1), ...Object.keys(obj2)];
     const uniqKeys = _.uniq(overallKeys);
@@ -30,7 +30,7 @@ const gendiff = (filePath1, filePath2, format = 'stylish') => {
     });
     return _.sortBy(result, 'name');
   };
-  const diffData = getDiff(data1, data2);
+  const diffData = getDiff(getFileData(filePath1), getFileData(filePath2));
   return formatter(diffData, format);
 };
 
