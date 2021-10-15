@@ -14,19 +14,17 @@ const getObjName = (obj, parent) => {
   return `${parent}.${obj.name}`;
 };
 const plainFormatter = (data, parent) => {
-  const arrayOfLines = data
-    .filter((obj) => obj.type !== 'unchangeable')
+  const arrayOfLines = data.filter((obj) => obj.type !== 'unchangeable')
     .map((obj) => {
       if (obj.type === 'added') {
-        return `Property '${getObjName(obj, parent)}' was added with value: 
-${strOrObj(obj.value)}`;
+        return `Property '${getObjName(obj, parent)}' was added with value: ${strOrObj(obj.value)}`;
       }
       if (obj.type === 'removed') {
         return `Property '${getObjName(obj, parent)}' was removed`;
       }
       if (obj.type === 'changed') {
-        return `Property '${getObjName(obj, parent)}' was updated. From 
-${strOrObj(obj.valueBefore)} to ${strOrObj(obj.valueAfter)}`;
+        return `Property '${getObjName(obj, parent)}' was updated. From
+        ${strOrObj(obj.valueBefore)} to ${strOrObj(obj.valueAfter)}`;
       }
       return plainFormatter(obj.children, getObjName(obj, parent));
     })
