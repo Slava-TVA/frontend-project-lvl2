@@ -23,8 +23,7 @@ const plainFormatter = (data, parent) => {
         return `Property '${getObjName(obj, parent)}' was removed`;
       }
       if (obj.type === 'changed') {
-        return `Property '${getObjName(obj, parent)}' was updated. From
-        ${strOrObj(obj.valueBefore)} to ${strOrObj(obj.valueAfter)}`;
+        return `Property '${getObjName(obj, parent)}' was updated. From ${strOrObj(obj.valueBefore)} to ${strOrObj(obj.valueAfter)}`;
       }
       return plainFormatter(obj.children, getObjName(obj, parent));
     })
